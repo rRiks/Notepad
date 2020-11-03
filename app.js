@@ -1,4 +1,4 @@
-// note class
+
 class Note {
     constructor(id, title, content, color) {
         this.title = title,
@@ -8,7 +8,7 @@ class Note {
     }
 }
 
-// UI class
+
 class UI {
     static refreshNotes() {
         document.querySelector('#note-list').innerHTML = '';
@@ -68,8 +68,6 @@ class UI {
     
 
 }
-
-// Store class
 class Store {
 
     static getNotes() {
@@ -113,25 +111,24 @@ class Store {
 }
 
 
-// Events: Display
+
 document.addEventListener('DOMContentLoaded', UI.refreshNotes());
 
-// Event: add note
 document.querySelector('#note-form').addEventListener('submit', e => {
     e.preventDefault();
-    // get form values
+
     const title = document.querySelector('#title').value;
     const content = document.querySelector('#content').value;
     const id = parseInt(document.querySelector('#noteid').value);
     const color = document.querySelector('.swatches').querySelector('.active').classList[0];
     
 
-    // validate
+
     if(title == '' || content == '') {
         UI.showAlert("Please fill in all fields", 'danger');
     }
     else {
-        // Instantiate note
+
         const note = new Note(id, title, content, color);
         
         // Add Note
@@ -144,7 +141,6 @@ document.querySelector('#note-form').addEventListener('submit', e => {
 
 })
 
-// Event: remove/update note
 document.querySelector('#note-list').addEventListener('click', e => {
     UI.refreshNotes(); // from UI
     if(e.target.classList.contains('fa-trash')) {
